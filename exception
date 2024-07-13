@@ -1,0 +1,36 @@
+class Num extends Thread{
+    synchronized public void run() {
+        for (int i=1;i<=5;i++) {
+            System.out.println(i);
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
+class Execption{
+
+    public static void main(String[] args) {
+        Runnable book = () ->{
+            for(int i = 1;i<=5;i++) {
+                System.out.println("Mango Db");
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        Num num = new Num();
+        Thread t1 = new Thread(book);
+        t1.start();
+        num.start();
+    }
+
+}
